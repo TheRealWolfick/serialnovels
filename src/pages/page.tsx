@@ -11,8 +11,8 @@ interface FeaturedBook {
 
 const HomePage = () => {
   const featuredBooks: FeaturedBook[] = [
-    { id: '1', title: 'The First Novella', author: 'Jane Smith', coverUrl: '/api/placeholder/200/300' },
-    { id: '2', title: 'Another Story', author: 'John Doe', coverUrl: '/api/placeholder/200/300' },
+    { id: '1', title: 'The First Novel', author: 'Jane Smith', coverUrl: '' },
+    { id: '2', title: 'Another Story', author: 'John Doe', coverUrl: '' },
   ];
 
   return (
