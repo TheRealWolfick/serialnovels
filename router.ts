@@ -2,12 +2,15 @@ import { renderToString } from "react-dom/server";
 import React from "react";
 import * as fs from 'fs';
 
+const PAGE_ROUTES = [
+    "/",
+    "/novels"
+]
+
 interface RouteModule {
     default: React.ComponentType
     layout?: React.ComponentType<{ children: React.ReactNode }>
 }
-
-// get root layout
 
 export function GetPaths(pathname: string) {
 
@@ -64,6 +67,25 @@ export async function HandleRoute(pathname: string) {
     try {
 
         console.log("REQ: ", pathname);
+
+        if (pathname.startsWith("/styles/")) {
+            try {
+                const css = await fs.promises.readFile(`./src${pathname}`, 'utf-8');
+                return new Response(css, {
+                    headers: {
+                        'Content-Type': 'text/css'
+                    }
+                });
+            } catch (error) {
+                console.error("Error loading CSS:", error);
+                return new Response("/* CSS file not found */", {
+                    status: 404,
+                    headers: {
+                        'Content-Type': 'text/css'
+                    }
+                });
+            }
+        }
 
         // Import page based on url
         const page_file: RouteModule = await import(`./src/pages${pathname}/page.tsx`)

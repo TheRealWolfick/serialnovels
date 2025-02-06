@@ -12,6 +12,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <title>Novel Website</title>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="stylesheet" href="styles/tailwind.css" />
             </head>
             <body>
                 <div id="root">
