@@ -2,6 +2,9 @@
   "name": "serialnovels",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun run index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -13,6 +16,7 @@
     "@types/react-dom": "^19.0.3",
     "lucide-react": "^0.474.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0"
   }
 }

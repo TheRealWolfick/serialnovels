@@ -1,8 +1,12 @@
-import { ren } from 'react-dom';
-import HomePage from "./src/pages/HomePage";
+import { HandleRoute } from "./router";
 
 const server = Bun.serve({
-    static: {
-        '/': HomePage
-    }
-})
+    port: 3000,
+    async fetch(req) {
+        const url = new URL(req.url);
+        return HandleRoute(url.pathname);
+    },
+    development: true
+});
+
+console.log(`Server running at http://localhost:${server.port}`);

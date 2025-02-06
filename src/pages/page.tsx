@@ -1,5 +1,6 @@
-import { Book, PersonStanding } from 'lucide-react';
-import RootLayout from '../layouts/RootLayout';
+// import { Book, PersonStanding } from 'lucide-react';
+import { BiBook } from 'react-icons/bi';
+import { BiUser } from 'react-icons/bi';
 
 interface FeaturedBook {
   id: string;
@@ -10,7 +11,7 @@ interface FeaturedBook {
 
 const HomePage = () => {
   const featuredBooks: FeaturedBook[] = [
-    { id: '1', title: 'The First Novel', author: 'Jane Smith', coverUrl: '/api/placeholder/200/300' },
+    { id: '1', title: 'The First Novella', author: 'Jane Smith', coverUrl: '/api/placeholder/200/300' },
     { id: '2', title: 'Another Story', author: 'John Doe', coverUrl: '/api/placeholder/200/300' },
   ];
 
@@ -22,11 +23,11 @@ const HomePage = () => {
             <h1 className="text-2xl font-bold">NovelHub</h1>
             <div className="flex space-x-4">
               <button className="flex items-center px-4 py-2 rounded-md bg-blue-600 text-white">
-                <Book className="mr-2 h-4 w-4" />
+                <BiBook className="mr-2 h-4 w-4" />
                 Read
               </button>
               <button className="flex items-center px-4 py-2 rounded-md bg-green-600 text-white">
-                <PersonStanding className="mr-2 h-4 w-4" />
+                <BiUser className="mr-2 h-4 w-4" />
                 Become Author
               </button>
             </div>
@@ -75,7 +76,5 @@ const HomePage = () => {
     </div>
   );
 };
-
-HomePage.Layout = RootLayout
 
 export default HomePage;
