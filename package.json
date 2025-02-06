@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "bun run --hot server-dev.ts",
     "dev:tailwind": "bunx @tailwindcss/cli -i ./src/styles/main.css -o ./src/styles/tailwind.css --watch",
-    "start": "bun run --hot server.ts"
+    "start": "bun run --hot server.ts",
+    "build:css": "bunx @tailwindcss/cli -i ./src/styles/main.css -o ./src/styles/tailwind.css"
   },
   "devDependencies": {
     "@types/bun": "latest",
