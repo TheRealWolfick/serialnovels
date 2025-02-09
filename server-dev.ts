@@ -46,7 +46,12 @@ const server = Bun.serve({
                 return new Response();
             }
 
+
+
             // For regular page requests, inject our livereload client script
+            if (url.pathname.endsWith(".ico")) {
+                return HandleRoute(url.pathname)
+            }
             const pageResponse = await HandleRoute(url.pathname);
             const html = await pageResponse.text();
             

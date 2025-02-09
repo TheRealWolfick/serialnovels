@@ -1,6 +1,8 @@
 import { renderToString } from "react-dom/server";
 import React from "react";
 import * as fs from 'fs';
+import { arrayBuffer } from "stream/consumers";
+import { Stream } from "stream";
 
 const PAGE_ROUTES = [
     "/",
@@ -84,6 +86,27 @@ export async function HandleRoute(pathname: string) {
                         'Content-Type': 'text/css'
                     }
                 });
+            }
+        }
+
+        if (pathname.endsWith(".ico")) {
+            try {
+                const ico = await Bun.file(`./public${pathname}`).arrayBuffer()
+                
+                return new Response(ico, {
+                    'headers': {
+                        'Content-Type': 'image/x-icon'
+                    }
+                })
+                    
+            } catch (error) {
+                console.error(`Error fetching ${pathname.replace(/^\/+|\/+$/g, '')}`)
+                return new Response(`/* ${pathname.replace(/^\/+|\/+$/g, '')} not found */`, {
+                    status: 404,
+                    headers: {
+                        'Content-Type': 'text/css'
+                    }
+                })
             }
         }
 
